@@ -1,0 +1,46 @@
+import java.util.Scanner;
+
+public class Operation {
+	
+	public double[] operation(int num1, int num2, int select) { //사칙연산을 수행하는 메소드
+		
+		double[] result = {0,0};
+		switch(select){
+			case 1:
+				result[0] = num1 +num2;
+				break;
+			case 2:
+				result[0] = num1 -num2;
+				break;
+			case 3:
+				result[0] = num1 *num2;
+				break;
+			case 4:
+				result[0] = num1 /num2;
+				result[1] = num1 % num2;
+				break;
+		}
+		
+		return result;
+	}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Operation oper = new Operation();
+		Scanner scan = new Scanner(System.in);
+		
+		System.out.println("두 정수를 입력하세요.");
+		int num1 = scan.nextInt();
+		int num2 = scan.nextInt();
+		System.out.println("사칙연산을 선택하세요");
+		System.out.println("1. 덧셈");
+		System.out.println("2. 뺄셈");
+		System.out.println("3. 곱셈");
+		System.out.println("4. 나눗셈");
+		int select = scan.nextInt();
+	
+		double[] value = oper.operation(num1, num2, select);
+		for(double x : value)
+			System.out.println(x);
+	}
+
+}
