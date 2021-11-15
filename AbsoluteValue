@@ -5,7 +5,7 @@ public class AbsoluteValue {  //두 정수의 차를 절대값으로 반환해�
 	public int minusAbsoluteValue(int num1, int num2) {
 		int result = 0;
 		
-		result = Math.abs(num1-num2);
+		result = Math.abs(num1-num2); //절대값을 반환해주는 Math.abs 메소드
 		
 		return result;
 	}
