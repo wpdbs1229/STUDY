@@ -16,8 +16,8 @@ public class Operation {
 				result[0] = num1 *num2;
 				break;
 			case 4:
-				result[0] = num1 /num2;
-				result[1] = num1 % num2;
+				result[0] = num1 /num2; // 몫을 저장
+				result[1] = num1 % num2; // 나머지를 저장
 				break;
 		}
 		
