@@ -1,0 +1,26 @@
+
+public class ToBinary {
+	
+	public static int minus(int num1, int num2) { // 두 정수의 차의 절대값을 반환하는 메소드
+		
+		return Math.abs(num2-num1);
+	}
+	
+	public static void toBinary(int decimal) {
+		
+		if(decimal>0) {
+			int bin = decimal%2; 
+			decimal /=2;
+			toBinary(decimal); // 재귀 호출
+			System.out.print(bin);  // 먼저 종료되는 메소드순으로 출력
+		}
+	}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		toBinary(minus(18,11));
+		System.out.println();
+		toBinary(minus(18,10));
+	}
+
+}
