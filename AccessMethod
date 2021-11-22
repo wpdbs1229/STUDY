@@ -1,0 +1,74 @@
+class Rectangle{
+	//정보은닉을위해 접근제어자를 private로 설정
+	private int upRightPointx, upRightPointy;
+	private int downLeftPointx, downLeftPointy;
+	
+	public Rectangle() {
+		upRightPointx = 0;
+		upRightPointy = 0;
+		downLeftPointx = 0;
+		downLeftPointy = 0;
+	}
+	//getter, setter 메소드
+	public int getUpRightPointx() {
+		return upRightPointx;
+	}
+	public void setUpRightPointx(int upRightPointx) {
+		if(upRightPointx >=0 && upRightPointx <=100 && upRightPointx > downLeftPointx) // 
+			this.upRightPointx = upRightPointx;
+		else return;
+
+	}
+	public int getUpRightPointy() {
+		return upRightPointy;
+	}
+	public void setUpRightPointy(int upRightPointy) {
+		if(upRightPointy >=0 && upRightPointy <=100 && upRightPointy > downLeftPointy)
+			this.upRightPointy = upRightPointy;
+		else return;
+	
+	}
+	public int getDownLeftPointx() {
+		return downLeftPointx;
+	}
+	public void setDownLeftPointx(int downLeftPointx) {
+		if(downLeftPointx >=0 && downLeftPointx <=100)
+			this.downLeftPointx = downLeftPointx;
+		else return;
+
+	}
+	public int getDownLeftPointy() {
+		return downLeftPointy;
+	}
+	public void setDownLeftPointy(int downLeftPointy) {
+		if(downLeftPointy >=0 && downLeftPointy <=100)
+			this.downLeftPointy = downLeftPointy;
+		else return;
+		
+	}
+	
+	public int getRectangleArea(Rectangle rec) {
+		int xlen = rec.getUpRightPointx() - rec.getDownLeftPointx();
+		int ylen = rec.getUpRightPointy() - rec.getDownLeftPointy();
+		
+		return xlen*ylen;
+	}
+
+}
+public class RectangleTest {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		Rectangle rectangle =  new Rectangle();
+		
+		rectangle.setDownLeftPointx(3);
+		rectangle.setDownLeftPointy(4);
+		rectangle.setUpRightPointx(10);
+		rectangle.setUpRightPointy(15);
+		
+		int result = rectangle.getRectangleArea(rectangle);
+		System.out.println("사각형의 넓이 : " + result);
+	}
+
+}
