@@ -1,0 +1,28 @@
+class SimpleNumber{
+	
+	static int num;
+	private SimpleNumber() {}
+	
+	public void addNum(int num) { this.num += num;}
+	public void showNum() {System.out.println(num);}
+	public static SimpleNumber getSimpleNumber() {
+		
+		return new SimpleNumber();
+	}
+}
+public class OnlyOneInstance {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		SimpleNumber simplenumber1 = SimpleNumber.getSimpleNumber();
+		simplenumber1.addNum(20);
+		
+		SimpleNumber simplenumber2 = SimpleNumber.getSimpleNumber();
+		simplenumber2.addNum(30);
+		
+		simplenumber1.showNum();
+		simplenumber2.showNum();
+	}
+
+}
