@@ -1,0 +1,55 @@
+import java.util.Scanner;
+
+class Phone{
+	
+	private String name;
+	private String phoneNumber;
+	private String birthday;
+	//생성자를 다음 매개변수로 초기화
+	public Phone(String name, String phoneNumber, String brithday) {
+		
+		this.name = name;
+		this.phoneNumber = phoneNumber;
+		this.birthday = birthday;
+		
+	}
+	//생성자 오버로딩
+	public Phone(String name, String phoneNumber) {
+		this(name, phoneNumber, "N/A");
+	}
+	public void showPhoneInfo() {
+		System.out.println("name : " + name);
+		System.out.println("phoneNumber : " + phoneNumber);
+		System.out.println("brithday : "+ birthday);
+	}
+}
+
+public class TheWihteBook {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc = new Scanner(System.in);
+		int choice = 0;
+		String name = "";
+		String phone = "";
+		String birth = "";
+		do {
+		System.out.println("Choice Number");
+		System.out.println("1. input data");
+		System.out.println("2. Exit");
+		choice = sc.nextInt();
+		
+		System.out.println("your Choice : " + choice);
+		System.out.print("Name : ");
+		name = sc.nextLine();
+		System.out.println(name);
+		System.out.print("Phone : ");
+		phone = sc.nextLine();
+		System.out.println(phone);
+		System.out.print("birth : ");
+		birth = sc.nextLine();
+		System.out.println(birth);
+		}while( choice == 1);
+	}
+
+}
