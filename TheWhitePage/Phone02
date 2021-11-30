@@ -6,7 +6,7 @@ class Phone{
 	private String phoneNumber;
 	private String birthday;
 	//생성자를 다음 매개변수로 초기화
-	public Phone(String name, String phoneNumber, String brithday) {
+	public Phone(String name, String phoneNumber, String birthday) {
 		
 		this.name = name;
 		this.phoneNumber = phoneNumber;
@@ -15,8 +15,12 @@ class Phone{
 	}
 	//생성자 오버로딩
 	public Phone(String name, String phoneNumber) {
-		this(name, phoneNumber, "N/A");
+		this.name =name;
+		this.phoneNumber = phoneNumber;
+		this.birthday = null;
+				
 	}
+	
 	public void showPhoneInfo() {
 		System.out.println("name : " + name);
 		System.out.println("phoneNumber : " + phoneNumber);
@@ -24,32 +28,57 @@ class Phone{
 	}
 }
 
-public class TheWihteBook {
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		Scanner sc = new Scanner(System.in);
-		int choice = 0;
-		String name = "";
-		String phone = "";
-		String birth = "";
-		do {
+class InputPhone{
+	static Scanner keyboard = new Scanner(System.in);
+	//System.out.println(); --> ??????? 왜 안되지 Scanner랑 연관이 있는 것 같은데
+	
+	//Menu를 출력하는 메소드
+	public static void showMenu() {
 		System.out.println("Choice Number");
 		System.out.println("1. input data");
 		System.out.println("2. Exit");
-		choice = sc.nextInt();
+		System.out.println("Choice : ");
+	}
+	
+	// 데이터를 입력 및 출력하는 메소드
+	public static void readData() {
 		
-		System.out.println("your Choice : " + choice);
 		System.out.print("Name : ");
-		name = sc.nextLine();
-		System.out.println(name);
+		String name = keyboard.nextLine();
 		System.out.print("Phone : ");
-		phone = sc.nextLine();
-		System.out.println(phone);
+		String phone = keyboard.nextLine();
 		System.out.print("birth : ");
-		birth = sc.nextLine();
-		System.out.println(birth);
-		}while( choice == 1);
+		String birth = keyboard.nextLine();
+		
+		Phone phoneInfo = new Phone(name, phone, birth);
+		phoneInfo.showPhoneInfo();
+	}
+	
+	
+}
+public class TheWihteBook {
+	
+	
+	public static void main(String[] args) {
+		// 이쪽에서는 왜 Static이 안되지?
+		Scanner sc = new Scanner(System.in);
+		
+		InputPhone input = new InputPhone();
+		int choice = 1;
+		
+		while(true) {
+			
+			input.showMenu();
+			choice = sc.nextInt(); 
+			if(choice == 1)
+				input.readData();
+			else if(choice == 2) {
+				System.out.println("Exit");
+				return;
+			}
+		}
+		
+		
 	}
 
 }
