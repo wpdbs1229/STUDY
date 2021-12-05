@@ -30,7 +30,7 @@ class Phone{
 
 class InputPhone{
 	static Scanner keyboard = new Scanner(System.in);
-	//System.out.println(); --> ??????? 왜 안되지 Scanner랑 연관이 있는 것 같은데
+	//System.out.println(); --> ??????? 왜 안되지 Scanner랑 연관이 있는 것 같은데 >>>>여기는 변수를 설정하는 범위야 다른 것 작성 x
 	
 	//Menu를 출력하는 메소드
 	public static void showMenu() {
