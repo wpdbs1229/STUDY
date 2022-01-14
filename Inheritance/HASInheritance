@@ -1,0 +1,54 @@
+class Gun{
+	
+	int bullet;
+	
+	public Gun(int bnum) { bullet = bnum; }
+	
+	public void shot() {
+		if(bullet  < 1) {
+			System.out.println("No bullet");
+			return;
+		}
+		
+		System.out.println("Bang!!");
+		bullet--;
+	}
+}
+
+//police with gun
+class Police extends Gun{
+	
+	int handcuffs;
+	
+	public Police(int bnum, int hnum) {
+		super(bnum);
+		handcuffs = hnum;
+	}
+	
+	public void putHandcuffs() {
+		
+		if(handcuffs < 1) {
+			System.out.println("No handcuffs");
+			return;
+		}
+		
+		System.out.println("Snap!!");
+		handcuffs--;
+	}
+}
+public class HASInheritance {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Police policeA = new Police(10, 4);
+		Police policeB = new Police(0, -1);
+		
+		System.out.println("A");
+		policeA.shot();
+		policeA.putHandcuffs();
+		System.out.println("B");
+		policeB.shot();
+		policeB.putHandcuffs();
+	}
+
+}
