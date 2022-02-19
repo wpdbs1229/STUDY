@@ -1,0 +1,33 @@
+import java.util.StringTokenizer;
+
+public class Token {
+	
+	public static void main(String[] args) {
+		
+		String str1 = "TEL Phone 082-010-3333-4444";
+		String str2 = "n+u+m+1+1+1";
+		
+		System.out.println("Frist Result");
+		StringTokenizer token1 = new StringTokenizer(str1);
+		while(token1.hasMoreTokens())
+			System.out.println(token1.nextToken());
+		
+		System.out.println("Second Result");
+		StringTokenizer token2 = new StringTokenizer(str1, " -");
+		while(token2.hasMoreTokens())
+			System.out.println(token2.nextToken());
+		
+		
+		System.out.println("Third Result");
+		StringTokenizer token3 = new StringTokenizer(str2,"+",true);
+		while(token3.hasMoreTokens())
+			System.out.println(token3.nextToken());
+	}
+	
+	/*
+	 * StringTokenizer 메소드를 사용하였다.
+	 * 첫번째 경우 매개변수만 넣었을 경우에는 띄어쓰기를 구분자로 토큰을 분리한다
+	 * 두번째 경우 띄어쓰기와, - 총 2개의 구분자를 넣어줬다
+	 * 세번쨰 경우 +를 구분자로 넣고 +또한 토큰으로 판별하기위해 true를 사용하였다.
+	 */
+}
