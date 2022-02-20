@@ -1,0 +1,51 @@
+class Orange{
+	
+	int sugarContent;
+	public Orange(int sugar){
+		sugarContent = sugar;
+	}
+	public void showSugar() {
+		System.out.println("SugarContent : " + sugarContent);
+	}
+}
+class Apple{
+	int weight;
+	
+	public Apple(int weight) {
+		this.weight = weight;
+	}
+	
+	public void showAppleWegiht() {
+		System.out.println("Weight :"+ weight);
+	}
+}
+
+class Fruit<T>{
+	
+	T item;
+	public Fruit(T item) { this.item = item;}
+	public T pullOut() {return item;}
+	
+}
+public class FruitBox {
+	
+	public static void main(String[] args) {
+		
+		Fruit<Orange> orgBox = new Fruit<Orange>(new Orange(10));
+		Orange org = orgBox.pullOut();
+		org.showSugar();
+		
+		Fruit<Apple> apBox = new Fruit<Apple>(new Apple(40));
+		Apple apple = apBox.pullOut();
+		apple.showAppleWegiht();
+		
+	}
+	
+	/*
+	 *  제너릭 클래스를 사용해 만든 과일 클래스 예제
+	 *  Fruit를 제너릭 클래스가 아닌 Object 클래스로 만들 수 있지만,
+	 *  그렇게 되면 Fruit의 매개변수로 문자열도 받을 수 있게된다.
+	 *  하지만 이는 문법의 오류가 아니라 컴파일상에서 오류가 발생되지 않기 떄문에 이를 찾기위해 개발자는 많은 노력을 쏟아야한다.
+	 *  이러한 문제점을 해결해주는 것이 바로 제너릭 클래스이다.
+	 */
+}
