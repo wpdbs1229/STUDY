@@ -1,0 +1,56 @@
+import java.util.*;
+
+class Person{
+	String name;
+	int age;
+	
+	public Person(String name, int age) {
+		this.age = age;
+		this.name = name;
+	}
+	
+	public String toString() {
+		return name+"(" + age + ")";
+	}
+	
+	public int hashCode() { //기존의 hashCode()메소드는 매개변수가 없기 때문에 매개변수를 넣어주면 오버라이딩이 아닌 오버라이드가 된다.
+		
+		return age%3;
+	}
+	
+	public boolean equals(Object obj) {
+		
+		Person str = (Person)obj;
+		if(str.name.equals(name) && str.age == age)
+			return true;
+		else return false;
+	}
+}
+public class PersonInfo {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		HashSet<Person> person = new HashSet<Person>();
+		
+		person.add(new Person("이진호", 10));
+		person.add(new Person("이진호", 20));
+		person.add(new Person("김명호", 20));
+		person.add(new Person("김명호", 15));
+		person.add(new Person("이진호", 20));
+		person.add(new Person("김명호", 20));
+		
+		System.out.println("저장된 데이터 수 : " + person.size());
+		
+		Iterator<Person> itr = person.iterator();
+		
+		while(itr.hasNext()) {
+			System.out.println(itr.next());
+		}
+		
+	}
+	/*
+	 * hashSet Pratice
+	 */
+
+}
