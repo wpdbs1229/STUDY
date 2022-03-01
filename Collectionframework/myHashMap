@@ -1,0 +1,28 @@
+import java.util.HashMap;
+
+public class myHashMap {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		HashMap<Integer, String> hMap = new HashMap<Integer, String>();
+		
+		hMap.put(5, "Lee"); //Auto Boxing : 기본 자료형을 Wrapper 클래스로 자동변환
+		hMap.put(3, "Kim");
+		hMap.put(1, "James");
+		hMap.put(2, "Lee");
+		
+		System.out.println("1 : "+ hMap.get(3));
+		System.out.println("2 : "+ hMap.get(5));
+		System.out.println("3 : "+ hMap.get(2));
+		System.out.println("4 : "+ hMap.get(1));
+		
+		hMap.remove(2);
+		System.out.println("3 : "+hMap.get(2));
+	}
+
+	/* HashMap <key, value>
+	 * key 값의 중복불허 (key로 데이터를 구분)
+	 * value 값이 같더라도 key값이 다르면 value는 중복허용
+	 * key에 데이터 저장되있지 않다면 null반환
+	 */
+}
