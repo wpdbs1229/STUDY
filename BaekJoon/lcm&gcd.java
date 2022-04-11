@@ -14,7 +14,7 @@ public class Main{
 		*/
 		solution(a, b);
 	}
-	
+	// 출력 함수
 	public static void solution(int x, int y) { 
 		
 		int gcd_Num = gcd(x,y);
@@ -23,7 +23,7 @@ public class Main{
 		System.out.println(gcd_Num);
 		System.out.println(lcm_Num);
 	}
-	
+	//최대공약수( 재귀 )
 	public static int gcd(int x, int y) {
 		
 		if( y == 0)
@@ -32,6 +32,7 @@ public class Main{
 		
 		
 	}
+	//최소공배수
 	public static int lcm(int gcd, int x, int y) {
 		
 		return gcd * (x / gcd) * (y / gcd); 
