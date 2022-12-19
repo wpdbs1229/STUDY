@@ -16,6 +16,7 @@ public class NumberOfCasesPractice {
     }
 
     //최대 공약수(GCD)
+    //두수의 약수를 구한 후에 약수중에 같은 값이 있다면 gcd에 저장 더 큰 값이 나온다면 다시 저장
     public int getGCD(int numA, int numB){
         int gcd = -1;
 
