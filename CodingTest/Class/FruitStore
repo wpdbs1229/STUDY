@@ -1,0 +1,55 @@
+
+class FruitSeller{ //판매자
+	
+	int numOfApple = 50;  //판매자가 가지고 있는 사과 갯수
+	int myMoney = 0;  // 수익
+	final int APPLE_PRICE = 1500; // 사과 가격
+	
+	public int sellApple (int money) { //사과를 파는 메소드
+		
+		int num = money/APPLE_PRICE; //몇개의 사과를 구매할 것인지 계산
+		numOfApple -=num; //남은 사과 갯수
+		myMoney += APPLE_PRICE*num; // 수익
+		return num;
+	}
+	
+	public void showSaleResult() { //판매자의 현상황을 나타내는 메소드
+		
+		System.out.println("남은 사과 갯수 :"+numOfApple);
+		System.out.println("수익 :" + myMoney);
+	}
+}
+
+class FruitBuyer{ //구매자
+	
+	int money = 6500; //가지고 있는 돈
+	int numOfApple = 0; //가진 사과의 갯수
+	
+	public int buyApple( FruitSeller sell, int buyMoney) { //사과를 구매하는 메소드
+		
+		numOfApple = sell.sellApple(buyMoney); // 사과구매한 갯수를 판매자의 메소드를 통해 값을 반환받는다.
+		money -= numOfApple*sell.APPLE_PRICE; //잔액
+		return numOfApple;
+	}
+	
+	public void showBuyResult() { //판매자의 현상황 나타내는 메소드	
+		
+		System.out.println("가진 사과 갯수 : " + numOfApple);
+		System.out.println("잔액 : " + money);
+	}
+}
+public class FruiteMain {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		FruitSeller seller = new FruitSeller(); //판매자 인스턴스 생성
+		FruitBuyer buyer = new FruitBuyer(); // 구매자 인스턴스 생성
+		
+		buyer.buyApple(seller, buyer.money);
+		System.out.println("판매자 상황");
+		seller.showSaleResult();
+		System.out.println("구매자 상황");
+		buyer.showBuyResult();
+	}
+
+}

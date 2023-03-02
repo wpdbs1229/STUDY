@@ -1,0 +1,29 @@
+import java.util.*;
+
+class StrLenComparator implements Comparator<String>{
+ 
+	public int compare(String str1, String str2) {
+		return str1.length() -str2.length();
+	}
+}
+public class myComparator {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		TreeSet<String> tSet = new TreeSet<String>(new StrLenComparator());
+		
+		tSet.add("Orange");
+		tSet.add("Apple");
+		tSet.add("Dog");
+		tSet.add("Individual");
+		
+		Iterator<String> itr = tSet.iterator();
+		
+		while(itr.hasNext())
+			System.out.println(itr.next());
+	}
+/*
+ * Comparalbe<T> : 자기자신과 객체를 비교한다 / comparaTo 메소드 구현
+ * Comparator<T> : 두 객체를 비교한다 /campare 메소드 구현
+ */
+}

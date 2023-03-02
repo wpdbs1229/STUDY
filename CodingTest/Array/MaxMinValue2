@@ -1,0 +1,31 @@
+
+public class MaxMinValue2 {
+	public static int min = 0 ,max = 0;
+	public static void minValue(int[] arr) {
+		min = arr[0];
+		//for-each을 통한 최솟값 찾기
+		for(int e : arr) {
+			 if(min > e)
+				 min =e;	
+		}
+		System.out.println("minVaule : " + min);
+	}
+	public static void maxValue(int[] arr) {
+		max = arr[0];
+		//for-each을 통한 최댓값 찾기
+		for(int e : arr) {
+			if( max < e)
+				max = e;
+		}
+		System.out.println("maxValue  : " + max);
+		
+	}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int[] arr = {6,2,1,78,100,2345,34};
+		
+		minValue(arr);
+		maxValue(arr);
+	}
+
+}

@@ -1,0 +1,46 @@
+
+public class Data {
+	
+	static int index = 0;
+	public String name ="";
+	public String phoneNum = "";
+	public String birthday = "";
+	
+	public Data(String name, String num, String birth) {
+		
+		this.name = name;
+		phoneNum = num;
+		birthday = birth;
+	}
+	
+	public Data[] dataArray = new Data[20];
+	
+	public void inputData(String name, String num, String birth, int count) {
+		dataArray[count] = new Data(name, num, birth);
+	}
+	
+	public Data explorData(String name) {
+		index = -1;
+		Data e = null;
+		for(Data d : dataArray) {
+			index++;
+			if( d.name.equals(name)) {
+				return d; 
+				
+			}
+			
+		}
+		return e;
+	}
+	
+	public void deleteData(String name) {
+		
+		Data e = explorData(name);
+		if(e != null) {
+			for(int i = index; i<dataArray.length; i++) {
+				dataArray[i] = dataArray[i+1];
+			
+			}
+		}
+	}
+}

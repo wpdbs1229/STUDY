@@ -1,0 +1,55 @@
+interface SimpleInterface{
+	
+	public void showYourName();
+}
+
+class UpperClass{
+	
+	public void showYourAncestor() {
+		System.out.println("UpperClass");
+	}
+}
+
+class AAA extends UpperClass implements SimpleInterface{
+	
+	public void showYourName() {
+		System.out.println("Class AAA");
+	}
+}
+
+class BBB extends UpperClass implements SimpleInterface{
+	
+	public void showYourName() {
+		System.out.println("Class BBB");
+	}
+}
+
+public class BoundedTypeParam2 {
+
+	public static <T extends SimpleInterface> void showInstamceAncestor(T param) {
+		param.showYourName();
+	}
+	
+	public static <T extends UpperClass> void showInstanceName(T param) {
+		param.showYourAncestor();
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		AAA aaa = new AAA();
+		BBB bbb = new BBB();
+		
+		showInstamceAncestor(aaa);
+		showInstanceName(aaa);
+		showInstamceAncestor(bbb);
+		showInstanceName(bbb);
+		
+		/*
+		 *  <T extends 인터페이스, 클래스>로  하여 T로 들어올 수 있는 자료형을 SimpleInterface를 
+		 *  구현하거나, UpperClass를 상속받는 클래스로 제한하였다. <T>를 사용한 것보다 훨씬 더 코드의 안전성이 증가
+		 *  제너릭 클래스의 경우 구현과 상속을 구분 없이 extends 키워드를 사용합니다.
+		 */
+	}
+
+}

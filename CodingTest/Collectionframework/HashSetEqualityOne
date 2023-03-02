@@ -1,0 +1,39 @@
+import java.util.*;
+
+class SimpleNumber{
+	
+	int num;
+	
+	public SimpleNumber(int n) { 
+		num = n;
+	}
+	
+	public String toString() {
+		return String.valueOf(num);	} //String.valueOf() 기본 자료형을 String 인스턴스로 변경해준다.
+}
+public class HashSetEqualityOne {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		HashSet<SimpleNumber> hSet = new HashSet<SimpleNumber>();
+		hSet.add(new SimpleNumber(10));
+		hSet.add(new SimpleNumber(20));
+		hSet.add(new SimpleNumber(20));
+		
+		System.out.println("저장된 데이터 수 : " + hSet.size());
+		
+		Iterator<SimpleNumber> itr = hSet.iterator();
+		while(itr.hasNext()) {
+			System.out.println(itr.next());
+		}
+	}
+/* 데이터가 동일하다는 기준을 어떻게 잡을까?
+ * HashSet<E> 클래스는 equals()메소드의 호출결과와 hashCode 메소드 호출결과를 가지고 동등 비교하여
+ * 데이터의 동일함을 판단한다.
+ * 
+ * 위에 20이 두 번 들어갔지만, 새로운 인스턴스를 만들었기 때문에 서로 다른 주소의 저장되있다.
+ * 따라서, equals 메소드는 String을 비교할 때는 내용자체를 비교하지만 그 외에는 주소를 통해 비교하기 때문에
+ * 두번 째 인스턴스 20과 세 번쨰 인스턴스 20을 다른 값이라고 인식한다. 
+ */
+}

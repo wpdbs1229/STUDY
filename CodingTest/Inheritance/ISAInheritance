@@ -1,0 +1,70 @@
+class Computer{
+	
+	String owner;
+	
+	public Computer(String name) { owner = name;}
+	public void calculate() {System.out.println("Calculate the requested content");}
+}
+
+class NotebookComp extends Computer{
+	
+	int battery;
+	public NotebookComp(String name, int initChag) {
+		super(name);
+		battery = initChag;
+	}
+	
+	//additional characteristics.
+	public void charging() { battery += 5;} 
+	public void movingCall() {  
+		
+		if(battery < 1) {
+			System.out.println("battery is low");
+			return;
+		}
+		
+		System.out.println("moving call");
+		calculate(); //parent class member.
+		battery--;
+	}
+}
+
+class TableNotebook extends NotebookComp{
+	
+	String registeredpen;
+	
+	public TableNotebook(String name, int initChag, String pen) {
+		super(name, initChag);
+		registeredpen = pen;
+	}
+	
+	//aditional characteristics.
+	public void write(String penInfo) {
+		
+		if(battery < 1) {
+			System.out.println("battery is low");
+			return;
+		}
+		
+		if(registeredpen.compareTo(penInfo) !=0) {
+			System.out.println("Not a registered pen");
+			return;
+		}
+		
+		System.out.println("Process your handwriting");
+	}
+}
+
+public class ISAInheritance {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		NotebookComp nc = new NotebookComp("Lee", 10);
+		TableNotebook tc = new TableNotebook("Kim", 20, "13304");
+		
+		nc.movingCall();
+		tc.movingCall();
+		tc.write("13304");
+	}
+
+}

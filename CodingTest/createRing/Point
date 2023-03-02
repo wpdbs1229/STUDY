@@ -1,0 +1,17 @@
+
+public class Point {
+
+	//원의 중심좌표
+	int xPos;
+	int yPos;
+	
+	//생성자 생성시 좌표 초기화
+	public Point(int x, int y) {
+		
+		xPos = x;
+		yPos = y;
+	}
+	
+	//원의 중심 좌표를 출력
+	public void showPointInfo() {System.out.println("["+xPos+","+yPos+"]");}
+}
