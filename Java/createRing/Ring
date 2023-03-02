@@ -1,0 +1,24 @@
+
+public class Ring {
+	
+	//링을 만들기 위한 바깥 쪽 원과 안쪽 원
+	Circle innerCircle;
+	Circle outCircle;
+	
+	//생성자로 각 원의 중심 및 반지름 초기화
+	public Ring(int inX, int inY, int inRad, int outX, int outY, int outRad ) {
+		
+		innerCircle = new Circle(inX, inY , inRad);
+		outCircle = new Circle(outX, outY, outRad);
+		
+	}
+	
+	//각 원의 정보를 출력
+	public void showRingInfo() {
+		
+		System.out.println("Inner Circle Info..");
+		innerCircle.showCircleInfo();
+		System.out.println("Out Circle Info...");
+		outCircle.showCircleInfo();
+	}
+}

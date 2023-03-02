@@ -1,0 +1,64 @@
+import java.util.Scanner;
+
+public class Menu {
+	int choiceNum = 0, index = 0;
+	String mename = "";
+	String mephone = "";
+	String mebirth = "";
+	
+	Scanner sc = new Scanner(System.in);
+	Data data = new Data(null, null, null);
+	
+	public void showMenu() {
+		
+		while(true) {
+			System.out.println("Choice Number");
+			System.out.println("1. Input Data ");
+			System.out.println("2. Search Data ");
+			System.out.println("3. Delete Data ");
+			System.out.println("4. Exit ");
+			System.out.print("Your Choice : ");
+			choiceNum = sc.nextInt();
+	
+			if(choiceNum == 1) {
+				System.out.println("Start entering.");
+				System.out.println("Name : ");
+				mename = sc.next();
+				System.out.println("Phone : ");
+				mephone = sc.next();
+				System.out.print("Birthday : ");
+				mebirth = sc.next();
+				data.inputData(mename, mephone, mename, index);
+				System.out.println("Input is complete.");
+				index++;
+			}
+			else if(choiceNum == 2) {
+				System.out.println("Start exploring");
+				System.out.print("Name : ");
+				mename = sc.next();
+				data = data.explorData(mename);
+				if(data !=null) {
+					System.out.println("Name : " + data.name);
+					System.out.println("Phone : " + data.phoneNum);
+					System.out.println("Birthday : " + data.birthday);
+				}
+				else System.out.println("Not Exist");
+			}
+			else if(choiceNum == 3) {
+				System.out.println("Start to delet");
+				System.out.print("Name : ");
+				mename = sc.next();
+				data.deleteData(mename);
+				System.out.println("deletion is complete");
+				index--;
+				
+			}
+			else if(choiceNum == 4) {
+				break;
+			}
+			else System.out.println("Please enter a valid number");
+		
+		}
+	}
+		
+}

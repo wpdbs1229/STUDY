@@ -1,0 +1,40 @@
+import java.util.*;
+
+public class IteratorUsage {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		LinkedList<String> list = new LinkedList<String>();
+		
+		list.add("Frist");
+		list.add("Second");
+		list.add("Third");
+		list.add("Fourth");
+		
+		Iterator<String> itr = list.iterator(); // iterator() 반환형은 Iterator<E> 
+		
+		System.out.println("1차 출력");
+		while(itr.hasNext()) {
+			String curStr = itr.next(); // 다음 번 요소를 반환
+			System.out.println(curStr);
+			if(curStr.equals("Third")) {
+				itr.remove(); //현재 위치에 요소 삭제
+			}
+		}
+		System.out.println("2차 출력");
+		itr = list.iterator();
+		while(itr.hasNext()){//다음 요소가 있다면 true, 없다면 false를 반환
+			String curStr = itr.next();
+			System.out.println(curStr);
+		}
+	}
+	/*
+	 * list.iterator() 호출시, 인스턴스가 생성된다. 해당 인스턴스는 Iterator<E> 인터페이스를 구현한 클래스의 인스턴스이다.
+	 * 해당 인스턴스의 참조값을 반환한다.
+	 * 반복자 Iterator를 사용하는 이유는 컬렉션 클래스 종류에 상관없이 동일한 형태의 데이터 참조방식을 사용하기 때문이다.
+	 * 사용하는 컬렉션 프레임워크가 List일 경우 get() 메소드를 지원하지만, Set의 경우는 순서가 존재하지 않기 때문에 get()메소드를 지원하지 않는다.
+	 * 따라서, 컬렉션 프레임워크를 교체하고 싶을 때, Iterator를 사용한다면, Iterator 부분은 아주 작은 수정만 하면된다.
+	 */
+	
+}

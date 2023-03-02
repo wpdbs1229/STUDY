@@ -1,0 +1,14 @@
+
+public class RingMain {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		//ring 인스턴스 생성
+		Ring ring = new Ring(1,1,4,2,2,9);
+		// 링으 정보를 출력
+		ring.showRingInfo();
+
+	}
+
+}

@@ -1,0 +1,45 @@
+class Person{
+	
+	private int residentID;
+	private int armyID;
+	private String birthYear;
+	private String birthMon;
+	private String birthDay;
+	
+	//생성자A 
+	public Person(int residentID, int armyID, String year, String month, String day ) {
+		
+		this.residentID = residentID;
+		this.armyID = armyID;
+		birthYear = year;
+		birthMon = month; 
+		birthYear = day;
+	}
+	
+	// 생성자A overloading
+	public Person(int residentID, String year, String month, String day) {
+		
+		this(residentID, 0, year, month, day); //this 키워드를 사용해 생성자 내에서 다른 생성자를 호출했다.
+	}
+	public void showPersonInfo() {
+		
+		System.out.println( "Resident Resistration Number : " + residentID);
+		System.out.println( "day of Birth : " + birthYear+"." + birthMon + "." + birthDay);
+		if(armyID == 0)
+			System.out.println("Citizen");
+		else System.out.println("dog number : " + armyID);
+		System.out.println();
+	}
+}
+public class ConstructorOverloading {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Person personA = new Person(970521,101023,"1997","05","21");
+		Person personB = new Person(910123,"1991","01","23");
+		
+		personA.showPersonInfo();
+		personB.showPersonInfo();
+	}
+
+}

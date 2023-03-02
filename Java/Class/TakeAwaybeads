@@ -1,0 +1,73 @@
+import java.util.Random;
+
+//게임을 진행할 child 객체의 클래스
+class Child{ 
+	
+	int numOfBead;
+	//생성자를 이용한 
+	public Child(int bead) { 
+		numOfBead = bead;
+	}
+	//구슬 획듣 메소드
+	public void obtainBead(int addBead ) {
+		numOfBead += addBead;
+	}
+	//구슬을 뺏는 메소드
+	public void stealBead(Child child ,int loseBead) {
+		
+		//가져가야하는 구슬의 갯수보다 가지고 있는 구슬의 갯수가 적으면 남아있는 구슬을 다 주고 구슬의 갯수를 0으로 설정합니다.
+		if(numOfBead < loseBead) {
+			int retBead = numOfBead;
+			numOfBead = 0;
+			child.obtainBead(retBead);
+		}
+		else 
+		numOfBead -=loseBead;
+	}
+	public int getProperty() {
+		return numOfBead;
+	}
+}
+
+class Coingame{
+	
+	int coin;
+	int front = 1, back = 0;
+	
+	public Coingame() {
+		coin = 0;
+	}
+	//게임 진행 메소드
+	public void playCoin(Child childA , Child childB, int side ) {
+		
+		//뒷면이면  childA가 구슬을 3개획득
+		if(side == back) { 
+			childB.stealBead(childA, 3);
+			System.out.println("childA의 구슬 : " + childA.getProperty());
+			System.out.println("childB의 구슬 : " + childB.getProperty());
+		}
+		//앞면이면 childB가 구슬을 3개획득
+		else {
+			childA.stealBead(childB, 3);
+			System.out.println("childA의 구슬 : " + childA.getProperty());
+			System.out.println("childB의 구슬 : " + childB.getProperty());
+		}
+	}	
+}
+public class StealingBeads {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Child childA = new Child(15);
+		Child childB = new Child(9);
+		Coingame game = new Coingame();
+		Random random = new Random();
+		
+		while(childA.numOfBead !=0 && childB.numOfBead !=0) { //둘 중 한명의 구슬 갯수가 0이 될때 까지 진행
+			int coinside = random.nextInt(2)+1;
+			game.playCoin(childA, childB, coinside);
+		}
+		
+	}
+
+}

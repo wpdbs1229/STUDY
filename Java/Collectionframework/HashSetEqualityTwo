@@ -1,0 +1,48 @@
+import java.util.*;
+
+class soppy{
+	
+	int num;
+	public soppy(int n){num = n;}
+	
+	public String toString() {return String.valueOf(num);}
+	
+	public int hashCode() {return num%3;}
+	
+	public boolean equals(Object obj) {
+		
+		soppy sn =(soppy)obj;
+		if(sn.num==num)
+			return true;
+		else
+			return false;
+	}
+}
+public class HashSetEqualityTwo {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		HashSet<soppy> hSet = new HashSet<soppy>();
+		
+		hSet.add(new soppy(20));
+		hSet.add(new soppy(10));
+		hSet.add(new soppy(20));
+		
+		System.out.println("데이터 사이즈 : "+ hSet.size());
+		
+		Iterator<soppy> itr = hSet.iterator();
+		
+		while(itr.hasNext()) {
+			System.out.println(itr.next());
+		}
+	}
+/*
+ *  hashSet은 다음과 같이 데이터를 검색한다.
+ *  1. Object 클래스의 hashCode 메소드의 반환 값을 해시 값으로 활용
+ *  2. Object 클래스의 equals 메소드의 반환 값을 이용해서 내용비고
+ *  
+ *  위 코드와 같이 hashCode메소드와 equals메소드를 적절히 오버라이딩하여 사용하면
+ *  hashSet을 유용하게 사용할 수 있다.
+ */
+}
