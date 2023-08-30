@@ -1,0 +1,34 @@
+class Solution {
+    public int solution(int[][] board) {
+        int answer = 0;
+        
+        for(int i = 0; i < board.length; i++){
+            for(int j = 0; j < board.length; j++){
+                if(board[i][j] == 1){
+                  for(int y = i -1; y <= i+1; y++){
+                        for(int x = j - 1; x <= j+1; x++){
+                            if(checkmod(y, x, board)){ 
+                                 if( board[y][x] == 0)
+                                        board[y][x] = 2;    
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+        for(int i = 0; i < board.length; i++){
+            for(int j = 0; j < board.length; j++){
+                if(board[i][j] == 0) answer++;
+            }
+        }
+        return answer;
+    }
+    
+    public boolean checkmod(int y, int x, int[][] board){
+        if( x > -1 && y > -1 && x < board[0].length &&  y < board.length ){
+            return true;
+        }
+        return false;
+    }
+}
