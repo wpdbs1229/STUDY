@@ -1,0 +1,16 @@
+class Solution {
+    public int solution(int chicken) {
+        Solution sol = new Solution();
+        int answer = -1;
+        
+        return answer = sol.servicChicken(chicken, 0);
+    }
+    
+    public int servicChicken(int chicken, int q){
+        if (chicken < 10)
+            return q;
+        int p = chicken / 10;
+        q += p;
+        return servicChicken(p + chicken % 10 , q);
+    }
+}
