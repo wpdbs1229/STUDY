@@ -1,0 +1,22 @@
+class Solution {
+    public int solution(String s) {
+        int answer = 0;
+        int prev = 0;
+        int temp = 0;
+        String[] strArr = s.split(" ");
+        
+        for(String st : strArr){
+            if(st.charAt(0) == '-'){
+                temp = Integer.valueOf(st.substring(1)) * -1;
+                prev = temp;
+            } else if ("Z".equals(st)){
+                temp = prev * -1;
+            } else {
+                temp = Integer.valueOf(st);
+                prev = temp;
+            }
+            answer += temp;
+        }
+        return answer;
+    }
+}
