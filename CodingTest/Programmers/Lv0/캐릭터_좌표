@@ -1,0 +1,40 @@
+class Solution {
+     public int[] solution(String[] keyinput, int[] board) {
+
+        int[] result = new int[2];
+        for(String input : keyinput){
+            Solution sol = new Solution();
+            switch(input){
+                case "left":
+                    if(checkBoardRange(result[0]-1, result[1], board))
+                        result[0] -= 1;
+                    break;
+                case "right":
+                    if(checkBoardRange(result[0]+1, result[1], board))
+                        result[0] += 1;
+                    break;
+                case "up":
+                    if(checkBoardRange(result[0], result[1]+1, board))
+                        result[1] += 1;
+                    break;
+                case "down":
+                    if(checkBoardRange(result[0], result[1]-1, board))
+                        result[1] -= 1;
+                    break;
+                default:
+                    continue;
+
+            }
+        }
+
+        return result;
+    }
+    public boolean checkBoardRange(int x, int y, int[] board){
+        int xPlusRange = board[0]/2;
+        int xMinusRange = board[0]/2 * -1;    
+        int yPlusRange = board[1]/2;
+        int yMinusRange = board[1]/2 * -1;
+        if(x >= xMinusRange  && y >= yMinusRange && x <= xPlusRange && y<= yPlusRange) return true;
+        return false;
+    }
+}
