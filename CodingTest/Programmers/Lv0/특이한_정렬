@@ -1,12 +1,20 @@
 import java.util.*;
-
 class Solution {
     public int[] solution(int[] numlist, int n) {
         
         List<Integer> nums = new ArrayList<>();
         for(int num : numlist) nums.add(num);
-        nums.sort((s1,s2) -> Integer.compare(Math.abs(s2-n), Math.abs(s1-n)));
-        Collections.reverse(nums);
+        nums.sort((s1,s2) -> {
+                if(Math.abs(s1-n) < Math.abs(s2-n) ){
+                    return -1;
+                } else if (Math.abs(s1-n) > Math.abs(s2-n)){
+                    return 1;
+                } else {
+                    if(s1-n > 0) return -1;
+                    else return 1;
+                }
+            });
+        
         return nums.stream().mapToInt(num -> num).toArray();
     }
 }
