@@ -1,0 +1,35 @@
+import java.util.*;
+
+class Solution {
+    public int solution(int a, int b) {
+        int answer = 1;
+        int bigNum = Math.max(a,b);
+        int gcd = 0;
+        for(int i = 1; i <= bigNum; i++){
+            if( a % i == 0 && b % i == 0){
+                gcd = i;
+            }
+        }
+        
+        b /= gcd;
+        Set<Integer> set = new HashSet<>();
+        
+        for(int i = 2; i <= b; i++){
+            
+            
+            while ( b % i == 0){
+                    b /= i;
+                    set.add(i);
+                 
+            }
+        }
+        
+        Iterator<Integer> it = set.iterator();
+        while(it.hasNext()){
+            int x = it.next();
+            if(x != 2 && x != 5 )
+                answer = 2;
+        }
+        return answer;
+    }
+}
