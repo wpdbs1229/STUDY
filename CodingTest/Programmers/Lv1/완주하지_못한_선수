@@ -1,0 +1,35 @@
+import java.util.HashMap;
+
+public class Solution {
+    public String solution(String[] participant, String[] completion) {
+
+        String answer = "";
+
+        HashMap<String, Integer> participantMap = new HashMap<>();
+
+        for (String runner : participant) {
+
+            participantMap.put(runner, participantMap.getOrDefault(runner, 0) + 1);
+
+        }
+
+        for (String finisher : completion) {
+
+            if (participantMap.containsKey(finisher)) {
+
+                participantMap.put(finisher, participantMap.get(finisher) - 1);
+
+            }
+
+        }
+
+        for (String key : participantMap.keySet()) {
+
+            if (participantMap.get(key) != 0) {
+                answer = key;
+            }
+        }
+        return answer;
+    }
+    
+}
