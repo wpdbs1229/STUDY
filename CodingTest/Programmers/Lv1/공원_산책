@@ -1,0 +1,79 @@
+import java.util.*;
+
+class Solution {
+    public int[] solution(String[] park, String[] routes) {
+
+        int[] answer = new int[2];
+        boolean flag = true;
+
+        int n = park.length;
+        int m = park[0].length();
+
+        int[][] directionArr = {
+                {0, -1},
+                {0, 1},
+                {-1, 0},
+                {1, 0}
+        };
+
+        int[] current = new int[2];
+        
+        for(int i = 0; i < park.length; i++){
+            if(park[i].indexOf('S') != -1){
+                current[0] = i;
+                current[1] = park[i].indexOf('S');
+            }
+        }
+        
+        int[] next = current.clone();
+
+        Map<String, int[]> routeMap = new HashMap<>();
+        routeMap.put("W", directionArr[0]);
+        routeMap.put("E", directionArr[1]);
+        routeMap.put("N", directionArr[2]);
+        routeMap.put("S", directionArr[3]);
+
+        for (String route : routes) {
+
+            String[] routeArr = route.split(" ");
+
+            String direction = routeArr[0];
+            int distance = Integer.valueOf(routeArr[1]);
+
+            for (int i = 0; i < distance; i++) {
+
+                flag = true;
+
+                next[0] += routeMap.get(direction)[0];
+                next[1] += routeMap.get(direction)[1];
+
+                if (next[0] < 0 || next[1] < 0 || next[0] >= n || next[1] >= m) {
+                    flag = false;
+                    break;
+                }
+                if (park[next[0]].charAt(next[1]) == 'X') {
+                    flag = false;
+                    break;
+                }
+
+            }
+
+            if (flag) {
+
+                current[0] = next[0];
+                current[1] = next[1];
+
+            } else {
+
+                next[0] = current[0];
+                next[1] = current[1];
+
+            }
+
+
+        }
+        answer[0] = current[0];
+        answer[1] = current[1];
+        return answer;
+    }
+}
