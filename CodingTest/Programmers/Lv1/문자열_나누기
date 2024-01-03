@@ -1,0 +1,47 @@
+import java.util.*;
+
+class Solution {
+    public int solution(String s) {
+        int answer = 0;
+        
+        char[] sArr = s.toCharArray();
+        
+        int xCount = 1;
+        int notXCount = 0;
+        char c = sArr[0];
+        
+        if(sArr.length == 1){
+            return ++answer;
+        }
+        for(int i = 1; i < sArr.length; i++){
+            
+            if( c == sArr[i]){
+                xCount++;
+            } else {
+                notXCount++;
+            }
+            
+            if( i == sArr.length -1 && xCount != notXCount){
+              answer++;
+            }
+            
+            if( xCount == notXCount){
+                answer++;
+                notXCount = 0;
+                
+                if(i+1 < sArr.length){
+                    c = sArr[++i];
+                    xCount = 1;
+                    
+                    if( i == sArr.length -1){
+                        answer++;
+                    }   
+                }
+            } 
+            
+            
+        }
+        
+        return answer;
+    }
+}
