@@ -1,0 +1,24 @@
+import java.util.*;
+import java.util.stream.*;
+
+class Solution {
+    public int solution(int k, int m, int[] score) {
+        int answer = 0;
+        
+        List<Integer> scoreList = 
+            Arrays.stream(score).boxed().collect(Collectors.toList());
+        
+        scoreList.sort(Comparator.reverseOrder());
+        
+        for(int i = m-1; i <scoreList.size(); i= i+m){
+            if(scoreList.size() - 1 >= i){
+                answer += scoreList.get(i) * m;
+                
+            } else {
+                answer += 0;
+            }
+        }
+        
+        return answer;
+    }
+}
