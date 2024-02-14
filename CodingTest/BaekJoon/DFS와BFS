@@ -1,0 +1,80 @@
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.StringTokenizer;
+
+public class DFS와BFS {
+
+    static int edgeNum, nodeNum, startNode;
+    static int[][] graph;
+
+    public static void main(String[] args) throws IOException {
+
+           BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+//        BufferedReader br = new BufferedReader(new FileReader("test.txt"));
+        StringTokenizer st1 = new StringTokenizer(br.readLine());
+
+        nodeNum = Integer.parseInt(st1.nextToken());
+        edgeNum = Integer.parseInt(st1.nextToken());
+        startNode = Integer.parseInt(st1.nextToken());
+
+        boolean[] visited = new boolean[nodeNum];
+        graph = new int[nodeNum][nodeNum];
+        Queue<Integer> queue = new LinkedList<>();
+
+
+        for (int i = 0; i < edgeNum; i++) {
+            StringTokenizer st2 = new StringTokenizer(br.readLine());
+
+            int a = Integer.parseInt(st2.nextToken()) - 1;
+            int b = Integer.parseInt(st2.nextToken()) - 1;
+
+            graph[a][b] = graph[b][a] = 1;
+
+        }
+
+        StringBuffer result = new StringBuffer();
+        dfs(startNode - 1, visited, result);
+
+        result.append("\n");
+        visited = new boolean[nodeNum];
+        bfs(startNode - 1, visited, result, queue);
+        System.out.println(result);
+    }
+
+    public static void dfs(int node, boolean[] visited, StringBuffer result) {
+
+        visited[node] = true;
+        result.append(node + 1).append(" ");
+
+        for (int i = 0; i < nodeNum; i++) {
+            if (graph[node][i] == 1 && !visited[i]) {
+                dfs(i, visited, result);
+            }
+        }
+
+    }
+
+    public static void bfs(int node, boolean[] visited, StringBuffer result, Queue<Integer> queue) {
+        queue.add(node);
+        visited[node] = true;
+
+        while (!queue.isEmpty()) {
+
+            int currentNode = queue.poll();
+            result.append(currentNode + 1).append(" ");
+
+            for (int i = 0; i < nodeNum; i++) {
+                if (graph[currentNode][i] == 1 && !visited[i]) {
+                    queue.add(i);
+                    visited[i] = true;
+                }
+            }
+
+        }
+    }
+}
