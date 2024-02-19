@@ -1,0 +1,24 @@
+import java.util.*;
+
+class Solution {
+   private static int answer;
+    public int solution(int[] number) {
+        combination(number, 0, 0 , 3, new int[3]);
+        return answer;
+    }
+
+    public static void combination(int[] arr, int startIdx, int cnt ,int limit, int[] selectArr){
+
+        if ( cnt == limit){
+            if (Arrays.stream(selectArr).sum() == 0){
+                answer++;
+            }
+            return;
+        }
+
+        for(int i = startIdx; i < arr.length; i++){
+            selectArr[cnt] = arr[i];
+            combination(arr, i + 1, cnt + 1, limit, selectArr);
+        }
+    }
+}
