@@ -1,0 +1,15 @@
+class Solution {
+    public int solution(int a, int b, int n) {
+        int answer = 0;
+        int newBottle = 0;
+        int empties = 0;
+        
+        empties = n;
+        while( a <= empties ){
+            newBottle = b * (empties / a);
+            empties = newBottle + empties % a;
+            answer += newBottle;
+        }
+        return answer;
+    }
+}
