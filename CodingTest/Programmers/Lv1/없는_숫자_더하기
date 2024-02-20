@@ -1,0 +1,20 @@
+import java.util.*;
+
+class Solution {
+    public int solution(int[] numbers) {
+        int answer = 0;
+        List<Integer> numbersList = new ArrayList<>();
+        
+        for(int number : numbers){
+            numbersList.add(number);    
+        }
+        
+        for(int i = 1; i < 10; i++ ){
+            if(!numbersList.contains(i)){
+                answer += i;
+            }
+        }
+        
+        return answer;
+    }
+}
