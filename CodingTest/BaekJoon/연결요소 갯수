@@ -1,0 +1,55 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+import java.util.StringTokenizer;
+
+public class 연결요소의_갯수 {
+
+    static int node, edge, count = 0;
+    static int[][] graph;
+    static boolean[] visited;
+
+    public static void main(String[] args) throws IOException {
+
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+//        BufferedReader br = new BufferedReader(new FileReader("test.txt"));
+        StringTokenizer setSt = new StringTokenizer(br.readLine());
+
+
+        node = Integer.parseInt(setSt.nextToken());
+        edge = Integer.parseInt(setSt.nextToken());
+
+        graph = new int[node][node];
+        visited = new boolean[node];
+
+        for (int i = 0; i < edge; i++) {
+            StringTokenizer st = new StringTokenizer(br.readLine());
+            int a = Integer.parseInt(st.nextToken());
+            int b = Integer.parseInt(st.nextToken());
+
+            graph[a - 1][b - 1] = graph[b - 1][a - 1] = 1;
+        }
+
+        for (int i = 0; i < node; i++) {
+            if (!visited[i]) {
+                dfs(i);
+                count++;
+            }
+        }
+
+        System.out.println(count);
+    }
+
+    private static void dfs(int x) {
+
+        visited[x] = true;
+
+        for (int i = 0; i < node; i++) {
+            if (graph[x][i] == 1 && !visited[i]) {
+                dfs(i);
+            }
+        }
+    }
+}
